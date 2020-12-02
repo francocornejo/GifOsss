@@ -1,3 +1,6 @@
+const apiKey = "FMXGQlWs92shetc16S7nUVKOraMO8csR"
+const defaultUrl = "https://api.giphy.com/v1/gifs"
+const apiUpload = "https://upload.giphy.com/v1/gifs"
 const windowHide = document.getElementsByClassName("window")
 const btnCancellar = document.getElementsByClassName("btnCancelar")
 const btnComenzar = document.getElementsByClassName("btnComenzar")
@@ -86,18 +89,36 @@ function stopRecordingCallback(){
     console.log("dejo de grabar")
     recorder.camera.stop()
     blob = recorder.getBlob();
-    gifPreview.src = createObjectURL(blob)
+    gifPreview.src = URL.createObjectURL(blob)
     let form = new FormData()
     form.append("grabacion", blob, "imagen.gif")
     recorder.destroy();
     recorder = null;
     gifPreview.style.display = "block";
     video.classList.add("videoHide")
+    btnSubir.addEventListener("click", () => {
+        uploadGif(form);
+    })
 };
 
 const stopGif = () => {
     recorder.stopRecording(stopRecordingCallback);
 };
+
+function uploadGif(data){
+    fetch('https://upload.giphy.com/v1/gifs'+ '?api_key=' + apiKey, {
+        method: 'POST',
+        body: data,
+    }).then (resp => {
+        return resp.json();
+    }).then(respuesta => {
+        fetch(`https://api.giphy.com/v1/gifs/${respuesta.data.id}?api_key=${apiKey}`)
+        .then(resp => {
+            return resp.json();
+        })
+    })
+}
+
 
 /*
 //Funcion stoprecordin nueva
