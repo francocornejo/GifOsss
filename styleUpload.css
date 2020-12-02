@@ -1,0 +1,380 @@
+body{
+    font-family: "Chakra Petch", sans-serif;
+}
+
+
+.arrow {
+    position: absolute;
+    left: 70px;
+    top: 60px;
+}
+
+.logoGifUpload {
+    margin-left: 50px;
+    position: relative;
+    bottom: 30px;
+    right: 50px;
+    margin-top: 50px;
+}
+/*------------------------------VENTANA------------------------------------*/
+.window {
+    margin-left: 300px;
+    width: 684px;
+    height: 386px;
+    background: #E6E6E6;
+    box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+    margin-bottom: 30px;
+}
+
+.windowImage {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    margin-left: 50px;
+}
+
+.titleGif {
+    background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    width: 682px;
+}
+
+.subtitleGif{
+    margin-left: 100px;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #110038;
+    letter-spacing: 0;
+    line-height: 22px;
+}
+
+.infoTitle {
+    margin-left: 100px;
+}
+
+.divBtn{
+    margin-right: 10px;
+    display: inline-block;
+    width: 95%;
+    text-align: end;
+}
+/*BOTONES VENTANA*/
+.btnComenzar {
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #110038;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 18px;
+    width: 144px;
+    height: 36px;
+    background: #FFF4FD;
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.btnCancelar {
+   font-family: 'Chakra Petch', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #110038;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 18px;
+    width: 144px;
+    height: 36px;
+    background: #FFF4FD;
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.btnCancelar a {
+    text-decoration: none;
+    color: #110038;
+}
+
+/*HOVER BOTONES VENTANA*/
+.btnCancelar:hover , .btnComenzar:hover {
+    background: #F7C9F3;
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.btnCancelar:active , .btnComenzar:active {
+    background: #bd9cba;
+    border: 1px dotted #110038;
+    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+}
+/*-----------------------------------------FINALIZA VENTANA------------------------------------------------*/
+
+.misGuifosUpload {
+    font-family: "Chakra Petch" , sans-serif;
+    font-weight: 400;
+    color:#110038;
+    font-size: 14px;
+    width: 1200px;
+    height: 32px;
+    background: #FFFAFE;
+    border: 1px solid #E6BBE2;
+    box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
+    display: flex;
+    align-items: center;
+}
+
+/*---------------------------VENTANA CAMARA GIFOS-----------------------------------------------------------------*/
+
+.windowCamara {
+    margin-left: 150px;
+    width: 860px;
+    height: 548px;
+    background: #E6E6E6;
+    box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+    margin-bottom: 30px;
+    margin-top: -30px;
+}
+
+.windowCamaraTitulo{
+    width: 858px;
+    font-family: "Chakra Petch" ,sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #FFFFFF;
+    background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+}
+
+.imagenCamara {
+    width: 832px;
+    height: 434px;
+    margin-left: 5px;
+    border: 1px solid #1a1819;
+}
+
+.video {
+    margin-left: 10px;
+}
+
+/*-----botones camara----*/
+.logoMasButton {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 21px;
+    margin-top: 10px;
+
+}
+
+.logoCamara{
+    width: 36px;
+    height: 34px;
+    background: #F7C9F3;
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.camaraLogoInterno {
+    width: 18px;
+    height: 17px;
+    position: relative;
+    top: 8px;
+    left: 8px;
+}
+
+.btnCapturar {
+    display: flex;
+    justify-content: center;
+    width: 144px;
+    height: 36px;
+    background: #F7C9F3;
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.btnCapturar p{
+    font-family: "Chakra Petch";
+    font-size: 16px;
+    color: #110038;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 18px;
+    position: relative;
+    bottom: 8px;
+}
+
+/*------------botones Listo que reemplaza el de capturar----------------------*/
+.logoMasListo {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.logoListo{
+    width: 36px;
+    height: 34px;
+    background: #FF6161;
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #993A3A, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.logoFlex {
+    display: flex;
+    position: relative;
+    margin-left: 655px;
+}
+
+.logoRecording {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 8px;
+    left: 8px;
+}
+
+.btnListo {
+    display: flex;
+    justify-content: center;
+    width: 144px;
+    height: 36px;
+    background: #FF6161;
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #993A3A, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.btnListo p{
+    font-family: "Chakra Petch";
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 18px;
+    position: relative;
+    bottom: 8px;
+}
+
+.timer {
+    width: 124px;
+    height: 36px;
+    font-family: ChakraPetch-Regular;
+    font-size: 16px;
+    color: #110038;
+    letter-spacing: 0;
+    line-height: 22px;
+    background: #FFFFFF;
+    border: 1px solid #979797;
+    box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+    margin-top: -36px
+}
+
+.contPreview {
+    width: 860px;
+    height: 584px;
+    margin-left: 265px;
+    background: #E6E6E6;
+    -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+            box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+            display: none;
+}
+
+.tituloChequeo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+
+.tituloChequeo h2 {
+    font-family: "ChakraPetch-Bold";
+    font-size: 16px;
+    color: #110038;
+    line-height: 22px;
+}
+
+.tituloChequeo img {
+    padding-right: 10px;
+}
+
+#gifPreview {
+    display: none;
+    padding-top: 11px;
+    padding-left: 11px;
+    width: 832px;
+    height: 434px;
+}
+
+#btnConfirmarRepetir {
+    margin-left: 542px;
+    margin-top: 28px;
+}
+
+#btnConfirmar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+/*.day_theme*/
+#btnRepetir {
+    background: #FFF4FD;
+    border: 1px solid #110038;
+    -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+            box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+    width: 144px;
+    height: 36px;
+    font-family: "ChakraPetch-Regular";
+    font-size: 16px;
+    color: #110038;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 18px;
+    margin-right: 14px;
+}
+
+/*day_theme*/
+#btnSubir {
+    background: #F7C9F3;
+  border: 1px solid #110038;
+  -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+  width: 144px;
+  height: 36px;
+  font-family: "ChakraPetch-Regular";
+  font-size: 16px;
+  color: #110038;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 18px;
+}
+
+
+
+
+
+/*-------------------------OCULTOS------------------------------------*/
+.windowHide{
+    display: none;
+}
+
+.windowCamaraHide {
+    display: none;
+}
+
+.logoMasButtonHide {
+    display: none;
+}
+
+.logoMasListoHide {       
+    display: none;
+}
+
+.videoHide {
+    display: none;
+}
