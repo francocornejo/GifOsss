@@ -91,7 +91,7 @@ function stopRecordingCallback(){
     blob = recorder.getBlob();
     gifPreview.src = URL.createObjectURL(blob)
     let form = new FormData()
-    form.append("grabacion", blob, "imagen.gif")
+    form.append('file', blob, 'myGif.gif');
     recorder.destroy();
     recorder = null;
     gifPreview.style.display = "block";
