@@ -2,6 +2,7 @@ const windowHide = document.getElementsByClassName("window")
 const btnCancellar = document.getElementsByClassName("btnCancelar")
 const btnComenzar = document.getElementsByClassName("btnComenzar")
 const windowCamaraHide = document.getElementsByClassName("windowCamaraHide")
+const windowCamara = document.getElementsByClassName("windowCamara")[0];
 const titulo = document.getElementById("titulo");
 const btnCapturar = document.getElementById("btnCapturar")
 const divLogo = document.getElementById("divLogo")
@@ -14,10 +15,10 @@ const btnListo = document.getElementsByClassName("btnListo")[0];
 const logoFlex = document.getElementsByClassName("logoFlex")[0];
 const gifPreview = document.getElementById("gifPreview");
 const btnSubir = document.getElementById("btnSubir");
+const contPreview = document.getElementsByClassName("contPreview")[0];
 var stream;
 var recorder;
 var blob;
-var isRecording = false;
 
 //Reemplaza Ventana inicial por la de Camara
 btnComenzar[0].addEventListener("click", () => {
@@ -72,7 +73,14 @@ btnCapturar.addEventListener("click", () =>{
         logoMasListoHide.style.display = "block"
         divLogo.style.display = "none"
         captureButtonCallback();
-})
+});
+
+btnListo.addEventListener('click', () =>{
+    contPreview.style.display = "block"
+    windowCamara.classList.add("windowCamaraHide")
+    console.log("dejo de grabar y guardo")
+    stopGif();
+});
 
 function stopRecordingCallback(){
     console.log("dejo de grabar")
@@ -85,18 +93,11 @@ function stopRecordingCallback(){
     recorder = null;
     gifPreview.style.display = "block";
     video.classList.add("videoHide")
-}
-
-
-btnListo.addEventListener('click', () =>{
-    console.log("dejo de grabar y guardo")
-    stopGif();
-    
-})
+};
 
 const stopGif = () => {
     recorder.stopRecording(stopRecordingCallback);
-}
+};
 
 /*
 //Funcion stoprecordin nueva
