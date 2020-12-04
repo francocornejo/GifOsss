@@ -113,7 +113,7 @@ body{
 }
 /*-----------------------------------------FINALIZA VENTANA------------------------------------------------*/
 
-.misGuifosUpload {
+.misGifosUpload {
     font-family: "Chakra Petch" , sans-serif;
     font-weight: 400;
     color:#110038;
@@ -140,12 +140,22 @@ body{
 }
 
 .windowCamaraTitulo{
+    margin-bottom: 13px;
     width: 858px;
     font-family: "Chakra Petch" ,sans-serif;
     font-weight: bold;
     font-size: 14px;
     color: #FFFFFF;
     background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+}
+
+.windowCamaraTitulo p {
+    display: flex;
+    justify-content: space-between;
+}
+
+.windowCamaraTitulo img {
+    padding-right: 5px;
 }
 
 .imagenCamara {
@@ -159,11 +169,16 @@ body{
     margin-left: 10px;
 }
 
+.gifCreado2 {
+    padding-left: 100px;
+    padding-top: 16px;
+  }
+
 /*-----botones camara----*/
 .logoMasButton {
     display: flex;
     justify-content: flex-end;
-    margin-right: 21px;
+    margin-right: 11px;
     margin-top: 10px;
 
 }
@@ -272,53 +287,81 @@ body{
     margin-top: -36px
 }
 
+/*-----------------------VENTANA PREVIEW GIFOS-----------------------------------*/
 .contPreview {
     width: 860px;
-    height: 584px;
-    margin-left: 265px;
+    height: 548px;
     background: #E6E6E6;
     -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
             box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
-            display: none;
+    display: none;
+    margin-bottom: 30px;
+    margin-top: -30px;
+    margin-left: 150px;
 }
 
-.tituloChequeo {
-    display: -webkit-box;
-    display: -ms-flexbox;
+.tituloChequeo p{
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    justify-content: space-between;
 }
 
-.tituloChequeo h2 {
+/*lightmode*/
+ .tituloChequeo {
+    height: 19px;
+    margin-bottom: 13px;
+    width: 858px;
+    font-family: "Chakra Petch" ,sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #FFFFFF;
+    background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+  }
+  
+  /*.lightmode 
+  .tituloChequeo h2 {
     font-family: "ChakraPetch-Bold";
-    font-size: 16px;
-    color: #110038;
-    line-height: 22px;
-}
+    font-size: 14px;
+    color: #FFFFFF;
+    padding-left: 4px;
+    padding-top: 3.4px;
+  }*/
 
 .tituloChequeo img {
-    padding-right: 10px;
+    padding-right: 5px;
 }
 
 #gifPreview {
     display: none;
-    padding-top: 11px;
-    padding-left: 11px;
+    padding-left: 15px;
     width: 832px;
-    height: 434px;
+    height: 450px;
 }
 
 #btnConfirmarRepetir {
-    margin-left: 542px;
-    margin-top: 28px;
+    margin-right: 12px;
+    margin-left: 13px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.timer2 {
+    width: 124px;
+    height: 36px;
+    font-family: ChakraPetch-Regular;
+    font-size: 16px;
+    color: #110038;
+    letter-spacing: 0;
+    line-height: 22px;
+    background: #FFFFFF;
+    border: 1px solid #979797;
+    box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+    margin-right: 436px;
 }
 
 #btnConfirmar {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
+    margin-left: 3px;
 }
 
 /*.day_theme*/
@@ -341,19 +384,237 @@ body{
 /*day_theme*/
 #btnSubir {
     background: #F7C9F3;
-  border: 1px solid #110038;
-  -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-          box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-  width: 144px;
-  height: 36px;
-  font-family: "ChakraPetch-Regular";
-  font-size: 16px;
-  color: #110038;
-  letter-spacing: 0;
-  text-align: center;
-  line-height: 18px;
+    border: 1px solid #110038;
+    -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+            box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+    width: 144px;
+    height: 36px;
+    font-family: "ChakraPetch-Regular";
+    font-size: 16px;
+    color: #110038;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 18px;
 }
 
+/*-------------------VENTANA SUBIENDO GIFOS----------------------------------*/
+#contenedorSubiendo {
+    width: 860px;
+    height: 548px;
+    margin-bottom: 30px;
+    margin-top: -30px;
+    margin-left: 150px;
+    background: #E6E6E6;
+    -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+  display: none;
+}
+
+.tituloChequeoSubiendo {
+    height: 19px;
+    margin-bottom: 13px;
+    width: 858px;
+    font-family: "Chakra Petch" ,sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #FFFFFF;
+    background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+}
+
+.tituloChequeoSubiendo p{
+    display: flex;
+    justify-content: space-between;
+}
+
+.tituloChequeoSubiendo img {
+    padding-right: 5px;
+}
+
+.contenedorInterno {
+    background: white;
+    width: 838px;
+    height: 440px;
+    margin: 8px;
+    border: black;
+    border: 1px solid black;
+}
+
+.subiendo {
+    font-weight: bold;
+    font-size: 16px;
+    color: #110038;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 22px;
+  }
+
+.mundo {
+    padding-left: 406px;
+    padding-top: 174px;
+}
+
+.tiempo {
+    font-size: 12px;
+    color: rgba(17, 0, 56, 0.64);
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 14px;
+}
+
+#contenedorCancelar {
+    margin-left: 702px;
+    margin-top: 21px;
+}
+  
+#btnCancelarSubiendo {
+    background: #FFF4FD;
+    border: 1px solid #110038;
+    -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+            box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+    width: 144px;
+    height: 36px;
+    font-size: 16px;
+    color: #110038;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 18px;
+}
+  
+.progressBar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 324px;
+    height: 24px;
+    background: #b4b4b4;
+    margin-left: 257px;
+    margin-top: 39px;
+    visibility: hidden;
+}
+  
+.progressBarPart {
+    margin-right: 2px;
+    width: 12px;
+    height: 20px;
+    background-color: #999999;
+}
+  
+.progressBarPartEnabled {
+    background-color: #f7c9f3;
+}
+  
+.visible {
+    visibility: visible;
+}
+
+/*-------------------CONTENEDOR FINAL-----------------*/
+
+.contenedorFinal {
+    width: 721px;
+    height: 391px;
+    margin-left: 250px;
+    background: #E6E6E6;
+    -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+            box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+    display: none;
+}
+  
+.contenedorAdentro {
+    display: flex;
+    margin-left: 30px;
+}
+  
+.contAdentro {
+    display: inline;
+    margin-top: -50px;
+}
+  
+.contAdentro p {
+    font-weight: bold;
+    font-size: 16px;
+    color: #110038;
+    letter-spacing: 0;
+    line-height: 22px;
+    margin-top: 76px;
+}
+  
+#botonAdentro1 {
+    background: #FFF4FD;
+    border: 1px solid #110038;
+    -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+            box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+    width: 256px;
+    height: 36px;
+    font-size: 16px;
+    color: #110038;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 18px;
+    margin-top: 16px;
+}
+  
+#botonAdentro2 {
+    margin-top: 14px;
+    background: #FFF4FD;
+    border: 1px solid #110038;
+    -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+            box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+    width: 256px;
+    height: 36px;
+    font-size: 16px;
+    color: #110038;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 18px;
+}
+  
+#otroGif {
+    width: 365px;
+    height: 191px;
+    padding-right: 20px;
+    margin-top: 10px;
+}
+  
+#ultimoBoton {
+    background: #F7C9F3;
+    border: 1px solid #110038;
+    -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+            box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+    font-family: "ChakraPetch-Regular";
+    font-size: 16px;
+    color: #110038;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 18px;
+    width: 144px;
+    height: 36px;
+    margin-top: 44px;
+    margin-left: 531px;
+}
+
+.tituloChequeo2 {
+    height: 19px;
+    margin-bottom: 13px;
+    width: 721px;
+    font-family: "Chakra Petch" ,sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #FFFFFF;
+    background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+}
+
+.tituloChequeo2 p{
+    display: flex;
+    justify-content: space-between;
+}
+
+.tituloChequeo2 img {
+    padding-right: 5px;
+}
+  
 
 
 
