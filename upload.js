@@ -2,7 +2,7 @@ const apiKey = "FMXGQlWs92shetc16S7nUVKOraMO8csR"
 const defaultUrl = "https://api.giphy.com/v1/gifs"
 const apiUpload = "https://upload.giphy.com/v1/gifs"
 const windowHide = document.getElementsByClassName("window")
-const btnCancellar = document.getElementsByClassName("btnCancelar")
+const btnCancelar = document.getElementsByClassName("btnCancelar")
 const btnComenzar = document.getElementsByClassName("btnComenzar")
 const windowCamaraHide = document.getElementsByClassName("windowCamaraHide")
 const windowCamara = document.getElementsByClassName("windowCamara")[0];
@@ -18,15 +18,35 @@ const btnListo = document.getElementsByClassName("btnListo")[0];
 const logoFlex = document.getElementsByClassName("logoFlex")[0];
 const gifPreview = document.getElementById("gifPreview");
 const btnSubir = document.getElementById("btnSubir");
+const btnRepetir = document.getElementById("btnRepetir");
 const contPreview = document.getElementsByClassName("contPreview")[0];
+const contenedorSubiendo = document.getElementById('contenedorSubiendo');
+const progressBar1cont = document.querySelector('#bar1');
+const progressBar2cont = document.querySelector('#bar2');
+const progressBar1 = document.querySelectorAll('#bar1 .progressBarPart');
+const btnCancelarSubiendo = document.getElementById("btnCancelarSubiendo");
+const btnConfirmarRepetir = document.getElementById("btnConfirmarRepetir");
+const contenedorFinal = document.getElementsByClassName("contenedorFinal")[0];
+const timer = document.getElementsByClassName("timer")[0];
+const otroGif = document.getElementById("otroGif");
+const ultimoBoton = document.getElementById("ultimoBoton");
+const botonAdentro1 = document.getElementById("botonAdentro1");
+const botonAdentro2 = document.getElementById("botonAdentro2");
+const mostrarInicio = document.getElementsByClassName("window")[0];
+const contenedorGifos = document.getElementsByClassName("contenedorGifos")[0];
 var stream;
 var recorder;
 var blob;
+
+window.addEventListener('load', () => {
+    recorrerGif();
+})
 
 //Reemplaza Ventana inicial por la de Camara
 btnComenzar[0].addEventListener("click", () => {
     windowHide[0].classList.add("windowHide")
     windowCamaraHide[0].classList.remove("windowCamaraHide")
+    contenedorGifos.style.display = "none";
     getStreamAndRecord();
 })
 
@@ -69,7 +89,7 @@ function captureButtonCallback(){
     })
     recorder.startRecording()
     recorder.camera = stream;
-    titulo.innerHTML = "Capturando Tu Gifo";
+    titulo.innerHTML = `<p>Capturando tu gifo <img src="assets/close.svg" alt="cierre"></p>`
 }
 
 btnCapturar.addEventListener("click", () =>{
@@ -85,11 +105,34 @@ btnListo.addEventListener('click', () =>{
     stopGif();
 });
 
+btnRepetir.addEventListener('click', () => {
+    location.reload();
+    //contPreview.style.display = "none"
+    //windowHide[0].classList.remove("windowHide")
+})
+
+btnSubir.addEventListener('click', () => {
+    btnConfirmarRepetir.style.display = "none";
+    contPreview.style.display = "none";
+    progressBarEffect(progressBar1);
+    contenedorSubiendo.style.display = "block";
+    setTimeout(function() {
+        contenedorSubiendo.style.display = "none";
+        contenedorFinal.style.display = "block";
+    }, 3000);
+})
+
+btnCancelarSubiendo.addEventListener('click', () => {
+    location.reload();
+    eliminarGif();
+})
+
 function stopRecordingCallback(){
     console.log("dejo de grabar")
     recorder.camera.stop()
     blob = recorder.getBlob();
-    gifPreview.src = URL.createObjectURL(blob)
+    gifPreview.src = URL.createObjectURL(blob);
+    otroGif.src = URL.createObjectURL(blob)
     let form = new FormData()
     form.append('file', blob, 'myGif.gif');
     recorder.destroy();
@@ -115,58 +158,56 @@ function uploadGif(data){
         fetch(`https://api.giphy.com/v1/gifs/${respuesta.data.id}?api_key=${apiKey}`)
         .then(resp => {
             return resp.json();
+        }).then(respuesta => {
+            let gifUrl = respuesta.data.images.fixed_height.url;
+            botonAdentro1.addEventListener('click', async()=> {
+                await navigator.clipboard.writeText(respuesta.data.images.fixed_height.url)
+                alert("Se copio el link en el clipboard")
+            })
+            botonAdentro2.addEventListener('click', () => {
+                let a = document.createElement('a');
+                a.download = "myGif.gif";
+                a.href = window.URL.createObjectURL(blob);
+                a.dataset.dowloadurl = ['application/octet-stream', a.dowload, a.href].join(':')
+                a.click()
+            })
+            ultimoBoton.addEventListener('click', () => {
+                location.reload();
+            })
         })
     })
 }
 
-
-/*
-//Funcion stoprecordin nueva
-function stopRecordingCallBack(){
-    recorder.camera.stop();
-    blob = recorder.getBlob();
-//previewGif mirar github
-    previewGif.src = URL.createObjectURL(blob)
-    otroGif.src = URL.createObjectURL(blob)
-    let form = new FormData();
-    form.append('file', blob, 'myGif.gif');
-    recorder.destroy();
-    recorder = null;
-    previewGif.style.display = 'block';
-    subir.addEventListener('click', () => {
-    uploadGif(form);
-    })
+function progressBarEffect(bar) {
+	let cont = 0;
+	setInterval(() => {
+		if (cont < bar.length) {
+			bar[cont].classList.toggle('progressBarPartEnabled');
+			cont++;
+		} else {
+			cont = 0;
+		}
+    }, 100);
+    progressBar1cont.classList.toggle("visible");
 }
 
-function uploadGif(data){
-    fetch('https://upload.giphy.com/v1/gifs' + '?api_key=' + apiKey, {
-    method: 'POST', // or 'PUT'
-    body: data,
-  }).then(resp => {
-    return resp.json();
-  }).then(respuesta => {
-    fetch(`https://api.giphy.com/v1/gifs/${respuesta.data.id}?api_key=${apiKey}`)
-    .then(resp => {
-        return resp.json();
-    }).then(respuesta => {
-        let gifUrl = respuesta.data.images.fixed_height.url;
-        localStorage.setItem(`Gif${respuesta.data.id}`,`${gifUrl}`)
-        botonAdentro1.addEventListener("click",async()=>{
-        await navigator.clipboard.writeText(respuesta.data.images.fixed_height.url)
-        alert("se copio el link en el clipboard")
-    })
-    botonAdentro2.addEventListener("click",() => {
-        let a = document.createElement('a');
-        a.download = 'myGif.gif';
-        a.href = window.URL.createObjectURL(blob);
-        a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
-        a.click();
-    })
-    ultimoBoton.addEventListener("click",()=>{
-        location.reload();
-    })
-  })
-})
+function eliminarGif(){
+    let item = localStorage.getItem("Gif")
+    let gifsArray = nuevoArray[item];
+    let gifCorrecto = nuevoArray.pop()
+}
+
+function recorrerGif() {
+    for (var i=0; i < localStorage.length; i++){
+        let keys = localStorage.key(i)
+        if(keys.startsWith("Gif")){
+            let item = localStorage.getItem(keys)
+            let gifCreado = document.createElement("img");
+            gifCreado.classList.add("gifCreado2")
+            gifCreado.src = item
+            contenedorGifos.appendChild(gifCreado)
+        }
+    }
 }
 
 //devuelve el gif
@@ -181,19 +222,4 @@ function recorrerStorage(){
             contenedorGif.appendChild(gifCreado)
         }
     }
-}*/
-
-
-
-
-
-/*
-else linea 66
-divLogo.innerHTML= `<div id= "divLogo" class="logoMasListo logoMasListoHide">
-                    <div class="logoFlex">
-                        <div id="logoCamara" class="logoListo">
-                            <img id="camaraInterno" class="logoRecording" src="./assets/recording.svg" alt="">
-                        </div>
-                        <button id="btnCapturar btnListo" class="btnListo"><p>Listo</p></button>
-                    </div>
-                    <div class="timer"><p>00:00:03:06</p></div>` */
+}
