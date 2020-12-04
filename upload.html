@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="day_theme.css">
     <link rel="stylesheet" href="night_theme.css">
     <link rel="stylesheet" href="styleUpload.css">
+    <link rel="stylesheet" href="styleGeneral.css">
 
 </head>
 <body>
@@ -41,7 +42,7 @@
         </div>
 
         <div class="windowCamara windowCamaraHide">
-            <div id="titulo" class="windowCamaraTitulo"><p>Un chequeo antes de comenzar</p></div>
+            <div id="titulo" class="windowCamaraTitulo"><p>Un chequeo antes de comenzar <img src="assets/close.svg" alt="cierre"></p></div>
             <!--<div class="imagenCamara">imagen</div>-->
             <video class="video"></video>
             <div id="divLogo" class="logoMasButton">
@@ -66,14 +67,9 @@
             </div>
         </div>
 
-        <div class="misGuifosUpload"><p>Mis Guifos</p></div>
-
         <section>
             <div class="contPreview">
-                <div class="tituloChequeo">
-                    <h2>Vista Previa</h2>
-                    <img src="assets/close.svg" alt="cierre">
-                </div>
+                <div class="tituloChequeo"><p>Vista Previa</p></div>
 
                 <div>
                     <img id="gifPreview" src="#" alt="">
@@ -84,9 +80,85 @@
                         <button id="btnRepetir">Repetir Captura</button>
                         <button id="btnSubir">Subir Guifo</button>
                     </div>
+                    
+                    <div class="timer2">
+                        <p>00:00:03:06</p>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <section>
+            <div id="contenedorSubiendo">
+                <div class="tituloChequeoSubiendo"><p>Subiendo Guifo<img src="assets/close.svg" alt="cruz de cierre"></p></div>
+
+                <div class="contenedorInterno">
+                    <img src="assets/globe_img.png" alt="mundo" class="mundo">
+                    <p class="subiendo">Estamos subiendo tu gifo...</p>
+                    <div class="progressBar" id="bar1">
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                    </div>
+                    <p class="tiempo">
+                        Tiempo restante: <span>38 años</span> algunos minutos
+                    </p>
+                </div>
+
+                <div id="contenedorCancelar">
+                    <button id="btnCancelarSubiendo">Cancelar</button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="contenedorFinal">
+                <div class="tituloChequeo2"><p>Guifo Subido Con Éxito<img src="assets/close.svg" alt="cruz de cierre"></p></div>
+
+                <div class="contenedorAdentro">
+                    <div class="gifCreado">
+                        <img id="otroGif" src="#" alt="gifcreado">
+                    </div>
+                    <div class="contAdentro">
+                        <p>Guifo creado con éxito</p>
+                        <button id="botonAdentro1">Copiar Enlace Guifo</button>
+                        <button id="botonAdentro2">Descargar Guifo</button>
+                    </div>
+                </div>
+
+                <div class="ultimoBoton">
+                    <button id="ultimoBoton">Listo</button>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <div class="contenedorGifos">
+                <div class="misGifosUpload"><p>Mis Guifos</p></div>
+            </div>
+        </section>
+        
 
         <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
         <script src="./upload.js"></script>
