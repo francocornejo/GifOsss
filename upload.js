@@ -50,6 +50,42 @@ btnComenzar[0].addEventListener("click", () => {
     getStreamAndRecord();
 })
 
+btnCapturar.addEventListener("click", () =>{
+        logoMasListoHide.style.display = "block"
+        divLogo.style.display = "none"
+        captureButtonCallback();
+});
+
+btnListo.addEventListener('click', () =>{
+    contPreview.style.display = "block"
+    windowCamara.classList.add("windowCamaraHide")
+    console.log("dejo de grabar y guardo")
+    stopGif();
+});
+
+btnRepetir.addEventListener('click', () => {
+    location.reload();
+})
+
+btnSubir.addEventListener('click', () => {
+    btnConfirmarRepetir.style.display = "none";
+    contPreview.style.display = "none";
+    progressBarEffect(progressBar1);
+    contenedorSubiendo.style.display = "block";
+    setTimeout(function() {
+        contenedorSubiendo.style.display = "none";
+        contenedorFinal.style.display = "block";
+    }, 3000);
+})
+
+btnCancelarSubiendo.addEventListener('click', () => {
+    location.reload();
+    eliminarGif();
+})
+
+
+//--------------FUNCIONES------------
+
 function getStreamAndRecord() {
     navigator.mediaDevices.getUserMedia({
         audio: false,
@@ -74,9 +110,7 @@ function getStreamAndRecord() {
         })
 }
 
-
 function captureButtonCallback(){
-    
     recorder = RecordRTC(stream, {
         type: 'gif',
         frameRate: 1,
@@ -92,40 +126,55 @@ function captureButtonCallback(){
     titulo.innerHTML = `<p>Capturando tu gifo <img src="assets/close.svg" alt="cierre"></p>`
 }
 
-btnCapturar.addEventListener("click", () =>{
-        logoMasListoHide.style.display = "block"
-        divLogo.style.display = "none"
-        captureButtonCallback();
-});
+function uploadGif(data){
+    fetch('https://upload.giphy.com/v1/gifs'+ '?api_key=' + apiKey, {
+        method: 'POST',
+        body: data,
+    }).then (resp => {
+        return resp.json();
+    }).then(respuesta => {
+        fetch(`https://api.giphy.com/v1/gifs/${respuesta.data.id}?api_key=${apiKey}`)
+        .then(resp => {
+            return resp.json();
+        }).then(respuesta => {
+            let gifUrl = respuesta.data.images.fixed_height.url;
+            localStorage.setItem(`gif${respuesta.data.id}`,`${gifUrl}`)
+            botonAdentro1.addEventListener('click', async()=> {
+                await navigator.clipboard.writeText(respuesta.data.images.fixed_height.url)
+                alert("Se copio el link en el clipboard")
+            })
+            botonAdentro2.addEventListener('click', () => {
+                let a = document.createElement('a');
+                a.download = "myGif.gif";
+                a.href = window.URL.createObjectURL(blob);
+                a.dataset.dowloadurl = ['application/octet-stream', a.dowload, a.href].join(':')
+                a.click()
+            })
+            ultimoBoton.addEventListener('click', () => {
+                location.reload();
+            })
+        })
+    })
+}
 
-btnListo.addEventListener('click', () =>{
-    contPreview.style.display = "block"
-    windowCamara.classList.add("windowCamaraHide")
-    console.log("dejo de grabar y guardo")
-    stopGif();
-});
+function recorrerGif() {
+    for (var i=0; i < localStorage.length; i++){
+        let keys = localStorage.key(i)
+        if(keys.startsWith("Gif")){
+            let item = localStorage.getItem(keys)
+            let gifCreado = document.createElement("img");
+            gifCreado.classList.add("gifCreado");
+            gifCreado.src = item
+            contenedorGifos.appendChild(gifCreado);
+        }
+    }
+}
 
-btnRepetir.addEventListener('click', () => {
-    location.reload();
-    //contPreview.style.display = "none"
-    //windowHide[0].classList.remove("windowHide")
-})
-
-btnSubir.addEventListener('click', () => {
-    btnConfirmarRepetir.style.display = "none";
-    contPreview.style.display = "none";
-    progressBarEffect(progressBar1);
-    contenedorSubiendo.style.display = "block";
-    setTimeout(function() {
-        contenedorSubiendo.style.display = "none";
-        contenedorFinal.style.display = "block";
-    }, 3000);
-})
-
-btnCancelarSubiendo.addEventListener('click', () => {
-    location.reload();
-    eliminarGif();
-})
+function eliminarGif(){
+    let item = localStorage.getItem("Gif")
+    let gifsArray = nuevoArray[item];
+    let gifCorrecto = nuevoArray.pop()
+}
 
 function stopRecordingCallback(){
     console.log("dejo de grabar")
@@ -148,36 +197,6 @@ const stopGif = () => {
     recorder.stopRecording(stopRecordingCallback);
 };
 
-function uploadGif(data){
-    fetch('https://upload.giphy.com/v1/gifs'+ '?api_key=' + apiKey, {
-        method: 'POST',
-        body: data,
-    }).then (resp => {
-        return resp.json();
-    }).then(respuesta => {
-        fetch(`https://api.giphy.com/v1/gifs/${respuesta.data.id}?api_key=${apiKey}`)
-        .then(resp => {
-            return resp.json();
-        }).then(respuesta => {
-            let gifUrl = respuesta.data.images.fixed_height.url;
-            botonAdentro1.addEventListener('click', async()=> {
-                await navigator.clipboard.writeText(respuesta.data.images.fixed_height.url)
-                alert("Se copio el link en el clipboard")
-            })
-            botonAdentro2.addEventListener('click', () => {
-                let a = document.createElement('a');
-                a.download = "myGif.gif";
-                a.href = window.URL.createObjectURL(blob);
-                a.dataset.dowloadurl = ['application/octet-stream', a.dowload, a.href].join(':')
-                a.click()
-            })
-            ultimoBoton.addEventListener('click', () => {
-                location.reload();
-            })
-        })
-    })
-}
-
 function progressBarEffect(bar) {
 	let cont = 0;
 	setInterval(() => {
@@ -189,37 +208,4 @@ function progressBarEffect(bar) {
 		}
     }, 100);
     progressBar1cont.classList.toggle("visible");
-}
-
-function eliminarGif(){
-    let item = localStorage.getItem("Gif")
-    let gifsArray = nuevoArray[item];
-    let gifCorrecto = nuevoArray.pop()
-}
-
-function recorrerGif() {
-    for (var i=0; i < localStorage.length; i++){
-        let keys = localStorage.key(i)
-        if(keys.startsWith("Gif")){
-            let item = localStorage.getItem(keys)
-            let gifCreado = document.createElement("img");
-            gifCreado.classList.add("gifCreado2")
-            gifCreado.src = item
-            contenedorGifos.appendChild(gifCreado)
-        }
-    }
-}
-
-//devuelve el gif
-function recorrerStorage(){
-    for(var i = 0; i < localStorage.length; i++){
-        let keys = localStorage.key(i)
-        if(keys.startsWith("Gif")){
-            let item = localStorage.getItem(keys)
-            let gifCreado = document.createElement("img");
-            gifCreado.classList.add("gifCreado");
-            gifCreado.src = item
-            contenedorGif.appendChild(gifCreado)
-        }
-    }
 }
