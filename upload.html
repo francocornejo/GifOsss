@@ -1,244 +1,185 @@
-const apiKey = "FMXGQlWs92shetc16S7nUVKOraMO8csR"
-const defaultUrl = "https://api.giphy.com/v1/gifs"
-const apiUpload = "https://upload.giphy.com/v1/gifs"
-const windowHide = document.getElementsByClassName("window")
-const btnCancelar = document.getElementsByClassName("btnCancelar")
-const btnComenzar = document.getElementsByClassName("btnComenzar")
-const windowCamaraHide = document.getElementsByClassName("windowCamaraHide")
-const windowCamara = document.getElementsByClassName("windowCamara")[0];
-const titulo = document.getElementById("titulo");
-const btnCapturar = document.getElementById("btnCapturar")
-const divLogo = document.getElementById("divLogo")
-const logoMasListoHide = document.getElementsByClassName("logoMasListo")[0];
-const video = document.getElementsByClassName("video")[0];
-const logoCamara = document.getElementById("logoCamara")
-const camaraInterno = document.getElementById("camaraInterno")
-const btnListoGuardar = document.getElementById("btnListo")
-const btnListo = document.getElementsByClassName("btnListo")[0];
-const logoFlex = document.getElementsByClassName("logoFlex")[0];
-const gifPreview = document.getElementById("gifPreview");
-const btnSubir = document.getElementById("btnSubir");
-const btnRepetir = document.getElementById("btnRepetir");
-const contPreview = document.getElementsByClassName("contPreview")[0];
-const contenedorSubiendo = document.getElementById('contenedorSubiendo');
-const progressBar1cont = document.querySelector('#bar1');
-const progressBar2cont = document.querySelector('#bar2');
-const progressBar1 = document.querySelectorAll('#bar1 .progressBarPart');
-const btnCancelarSubiendo = document.getElementById("btnCancelarSubiendo");
-const btnConfirmarRepetir = document.getElementById("btnConfirmarRepetir");
-const contenedorFinal = document.getElementsByClassName("contenedorFinal")[0];
-const timer = document.getElementsByClassName("timer")[0];
-const otroGif = document.getElementById("otroGif");
-const ultimoBoton = document.getElementById("ultimoBoton");
-const botonAdentro1 = document.getElementById("botonAdentro1");
-const botonAdentro2 = document.getElementById("botonAdentro2");
-const mostrarInicio = document.getElementsByClassName("window")[0];
-const contenedorGifos = document.getElementsByClassName("contenedorGifos")[0];
-const dropDownArrow = document.getElementById("dropdown");
-const containThemes = document.getElementsByClassName("buttonSaylor");
-const day = document.getElementById("day")
-const night = document.getElementById("night")
-const misGifos = document.getElementsByClassName("mis_gifos")[0];
-var stream;
-var recorder;
-var blob;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Guifos</title>
+    <link href= "https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap"  rel="stylesheet">
+    <link rel="stylesheet" href="day_theme.css">
+    <link rel="stylesheet" href="night_theme.css">
+    <link rel="stylesheet" href="styleUpload.css">
+    <link rel="stylesheet" href="styleGeneral.css">
 
-window.addEventListener('load', () => {
-    recorrerGif();
-})
+</head>
+<body class="day_theme">
+    <body class="day_theme">   
+        <div class="bienvenidos">
+            <p>¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803</p>
+        </div>
+    <div class="probar_div">
+    <header>
+        <div >
+            <div class="arrow"><a href="gifos.html"><img src="./assets/arrow.svg" alt=""></a></div>
+            <div id="logo" class="logoGifUpload"><img class="logoLight" src="./gifOF_logo.png" alt=""></div>
+        </div>
 
-misGifos.addEventListener('click', () => {
-    windowHide[0].classList.add("windowHide")
-})
+        <div class="button">   
+            <a href="upload.html"><button class="buttonGif buttonCreate" style="width: 144px; height: 36px;">Crear Gifos</button></a>  
+            <button class="buttonGif" style="width: 144px; height: 36px; margin-left: 10px;">Elegir Tema</button>           
+            <button id="dropdown" class="buttonGif" style="width: 36px; height: 36px; position: relative; right: 5px;"><img src="./assets/dropdown.svg" alt="F"></button>
+            
+                <div class="buttonSaylor hideSaylor">                      
+                    <button class="saylorDay" id="day">Saylor Day</button>                    
+                    <button class="saylorNight" id="night">Saylor Night</button>                
+                </div>
+        </div>
 
-//Reemplaza Ventana inicial por la de Camara
-btnComenzar[0].addEventListener("click", () => {
-    windowHide[0].classList.add("windowHide")
-    windowCamaraHide[0].classList.remove("windowCamaraHide")
-    contenedorGifos.style.display = "none";
-    getStreamAndRecord();
-})
+        <div>
+            <p class="mis_gifos"><ins>M</ins>is Guifos</p>
+        </div>
+    </header>
 
-btnCapturar.addEventListener("click", () =>{
-        logoMasListoHide.style.display = "block"
-        divLogo.style.display = "none"
-        captureButtonCallback();
-});
+        <div class="window">
+            <div class="titleGif"><p>Crear Guifos</p></div>
+            <div class="windowImage"><img src="./assets/window_img.png" alt=""></div>
+            <div class="subtitleGif"><p>Aca podes crear tus propios Guifos</p></div>
+            <div class="infoTitle">
+                <p>Crear tu guifo es muy fácil, graba cualquier imagen con tu cámara y obtén guifos personalizados. Los pasos para crear tu guifo son:</p>
+                <p><b>1)</b> Dar permisos de acceso a la cámara (sólo por el tiempo de uso)</p>
+                <p><b>2)</b> Capturar tu momento guifo</p>
+                <p><b>3)</b> Revisar el momento</p>
+                <p><b>4)</b> Listo para subir y compartir!</p>
+                <p>¿Quieres comenzar a crear tu guifo ahora?</p>
+            </div>
+                <div class="divBtn">
+                    <button class="btnCancelar"><a href="./gifos.html">Cancelar</a></button>
+                    <button class="btnComenzar">Comenzar</button>
+                </div>
+        </div>
 
-btnListo.addEventListener('click', () =>{
-    contPreview.style.display = "block"
-    windowCamara.classList.add("windowCamaraHide")
-    console.log("dejo de grabar y guardo")
-    stopGif();
-});
+        <div class="windowCamara windowCamaraHide">
+            <div id="titulo" class="windowCamaraTitulo"><p>Un chequeo antes de comenzar <img src="assets/close.svg" alt="cierre"></p></div>
+            <!--<div class="imagenCamara">imagen</div>-->
+            <video class="video"></video>
+            <div id="divLogo" class="logoMasButton">
+                    <div class="logoCamara">
+                        <img class="camaraLogoInterno" src="./assets/camera.svg" alt="">
+                    </div>
+                <button id="btnCapturar" class="btnCapturar"><p>Capturar</p></button>
+            </div>
+            
+            <div class="logoMasListo logoMasListoHide">
+                <div class="logoFlex">
+                    <div class="logoListo">
+                        <img class="logoRecording" src="./assets/recording.svg" alt="">
+                    </div>
+                    <button class="btnListo"><p>Listo</p></button>
+                </div>
+            
+                
+               <div class="timer">
+                    <p>00:00:03:06</p>
+                </div>
+            </div>
+        </div>
 
-btnRepetir.addEventListener('click', () => {
-    location.reload();
-})
+        <section>
+            <div class="contPreview">
+                <div class="tituloChequeo"><p>Vista Previa</p></div>
 
-btnSubir.addEventListener('click', () => {
-    btnConfirmarRepetir.style.display = "none";
-    contPreview.style.display = "none";
-    progressBarEffect(progressBar1);
-    contenedorSubiendo.style.display = "block";
-    setTimeout(function() {
-        contenedorSubiendo.style.display = "none";
-        contenedorFinal.style.display = "block";
-    }, 3000);
-})
+                <div>
+                    <img id="gifPreview" src="#" alt="">
+                </div>
 
-btnCancelarSubiendo.addEventListener('click', () => {
-    location.reload();
-    eliminarGif();
-})
+                <div id="btnConfirmarRepetir">
+                    <div id="btnConfirmar">
+                        <button id="btnRepetir">Repetir Captura</button>
+                        <button id="btnSubir">Subir Guifo</button>
+                    </div>
+                    
+                    <div class="timer2">
+                        <p>00:00:03:06</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <section>
+            <div id="contenedorSubiendo">
+                <div class="tituloChequeoSubiendo"><p>Subiendo Guifo<img src="assets/close.svg" alt="cruz de cierre"></p></div>
 
-//--------------FUNCIONES------------
+                <div class="contenedorInterno">
+                    <img src="assets/globe_img.png" alt="mundo" class="mundo">
+                    <p class="subiendo">Estamos subiendo tu gifo...</p>
+                    <div class="progressBar" id="bar1">
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                        <div class="progressBarPart"></div>
+                    </div>
+                    <p class="tiempo">
+                        Tiempo restante: <span>38 años</span> algunos minutos
+                    </p>
+                </div>
 
-function getStreamAndRecord() {
-    navigator.mediaDevices.getUserMedia({
-        audio: false,
-        video: {
-            height: {
-                max: 434,
-                exact: 434
-            },
-            width: {
-                max: 838,
-                exact: 838
-            }
-        }
-    })
-        .then(function (cameraResponse) {
-            stream = cameraResponse;
-            video.srcObject = stream;
-            video.play()
-        })
-        .catch(() =>{
-            alert("Necesitas una camara para continuar")
-        })
-}
+                <div id="contenedorCancelar">
+                    <button id="btnCancelarSubiendo">Cancelar</button>
+                </div>
+            </div>
+        </section>
 
-function captureButtonCallback(){
-    recorder = RecordRTC(stream, {
-        type: 'gif',
-        frameRate: 1,
-        quality: 10,
-        width: 360,
-        hidden: 240,
-        onGifRecordingStarted: () => {
-        console.log('started')
-        },
-    })
-    recorder.startRecording()
-    recorder.camera = stream;
-    titulo.innerHTML = `<p>Capturando tu gifo <img src="assets/close.svg" alt="cierre"></p>`
-}
+        <section>
+            <div class="contenedorFinal">
+                <div class="tituloChequeo2">
+                    <p>Guifo Subido Con Éxito<img src="assets/close.svg" alt="cruz de cierre"></p>
+                </div>
 
-function uploadGif(data){
-    fetch('https://upload.giphy.com/v1/gifs'+ '?api_key=' + apiKey, {
-        method: 'POST',
-        body: data,
-    }).then (resp => {
-        return resp.json();
-    }).then(respuesta => {
-        fetch(`https://api.giphy.com/v1/gifs/${respuesta.data.id}?api_key=${apiKey}`)
-        .then(resp => {
-            return resp.json();
-        }).then(respuesta => {
-            let gifUrl = respuesta.data.images.fixed_height.url;
-            localStorage.setItem(`gif${respuesta.data.id}`,`${gifUrl}`)
-            botonAdentro1.addEventListener('click', async()=> {
-                await navigator.clipboard.writeText(respuesta.data.images.fixed_height.url)
-                alert("Se copio el link en el clipboard")
-            })
-            botonAdentro2.addEventListener('click', () => {
-                let a = document.createElement('a');
-                a.download = "myGif.gif";
-                a.href = window.URL.createObjectURL(blob);
-                a.dataset.dowloadurl = ['application/octet-stream', a.dowload, a.href].join(':')
-                a.click()
-            })
-            ultimoBoton.addEventListener('click', () => {
-                location.reload();
-            })
-        })
-    })
-}
+                <div class="contenedorAdentro">
+                    <div class="gifCreado">
+                        <img id="otroGif" src="#" alt="gifcreado">
+                    </div>
+                    <div class="contAdentro">
+                        <p>Guifo creado con éxito</p>
+                        <button id="botonAdentro1">Copiar Enlace Guifo</button>
+                        <button id="botonAdentro2">Descargar Guifo</button>
+                    </div>
+                </div>
 
-//agregar gif a Mis Guifos
-function recorrerGif() {
-    for (var i=0; i < localStorage.length; i++){
-        let keys = localStorage.key(i)
-        if(keys.startsWith("Gif")){
-            let item = localStorage.getItem(keys)
-            let gifCreado = document.createElement("img");
-            gifCreado.classList.add("gifCreado");
-            gifCreado.src = item
-            contenedorGifos.appendChild(gifCreado);
-        }
-    }
-}
+                <div class="ultimoBoton">
+                    <button id="ultimoBoton">Listo</button>
+                </div>
 
-function eliminarGif(){
-    let item = localStorage.getItem("Gif")
-    let gifsArray = nuevoArray[item];
-    let gifCorrecto = nuevoArray.pop()
-}
+            </div>
+        </section>
 
-function stopRecordingCallback(){
-    console.log("dejo de grabar")
-    recorder.camera.stop()
-    blob = recorder.getBlob();
-    gifPreview.src = URL.createObjectURL(blob);
-    otroGif.src = URL.createObjectURL(blob)
-    let form = new FormData()
-    form.append('file', blob, 'myGif.gif');
-    recorder.destroy();
-    recorder = null;
-    gifPreview.style.display = "block";
-    video.classList.add("videoHide")
-    btnSubir.addEventListener("click", () => {
-        uploadGif(form);
-    })
-};
+        <section>
+            <div class="contenedorGifos">
+                <div class="misGifosUpload"><p>Mis Guifos</p></div>
+            </div>
+        </section>
+        
 
-const stopGif = () => {
-    recorder.stopRecording(stopRecordingCallback);
-};
-
-//Barra progreso Subir gif
-function progressBarEffect(bar) {
-	let cont = 0;
-	setInterval(() => {
-		if (cont < bar.length) {
-			bar[cont].classList.toggle('progressBarPartEnabled');
-			cont++;
-		} else {
-			cont = 0;
-		}
-    }, 100);
-    progressBar1cont.classList.toggle("visible");
-}
-
-
-//Cambio de color "DAY" a "NIGHT"
-day.addEventListener("click", () => {   
-    document.getElementsByTagName("body")[0].classList.add("day_theme")    
-    document.getElementsByTagName("body")[0].classList.remove("night_theme")
-    document.getElementsByClassName("logoLight")[0].src="./gifOF_logo.png"
-    containThemes[0].classList.toggle("hideSaylor")
-    document.getElementsByClassName("camaraLogoInterno")[0].src="./assets/camera.svg"
-})
-
-night.addEventListener("click", () => {   
-    document.getElementsByTagName("body")[0].classList.remove("day_theme")  
-    document.getElementsByTagName("body")[0].classList.add("night_theme")    
-    document.getElementsByClassName("logoLight")[0].src="./gifOF_logo_dark.png";
-    containThemes[0].classList.toggle("hideSaylor")
-    document.getElementsByClassName("camaraLogoInterno")[0].src="./assets/camera_light.svg"
-})
-
-dropDownArrow.addEventListener("click", () =>{
-    containThemes[0].classList.toggle("hideSaylor")
-})
+        <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+        <script src="./upload.js"></script>
+        
+</body>
+</html>
