@@ -616,7 +616,105 @@ body{
 }
   
 
+/*--------------------CAMBIOS DE COLOR Y HEADER----------------*/
+.day_theme .button {
+    position: relative;
+    left: 750px;
+    bottom: 80px;
+    width: 450px;
+}
 
+.night_theme .button {
+    position: relative;
+    left: 750px;
+    bottom: 80px;
+    width: 450px;
+}
+
+.night_theme .titleGif {
+    background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+}
+
+.night_theme .btnCapturar {
+    background: #EE3EFE;
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+}
+
+.night_theme .btnCapturar p{
+    color: #FFFFFF;
+}
+
+.night_theme .logoCamara {
+    background: #EE3EFE;
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+}
+
+/*hover cambio de tema*/
+
+.night_theme .btnCancelar:hover{
+    background: #CE36DB;
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+    color: #FFFFFF;
+}
+
+.night_theme .btnComenzar:hover {
+    background: #CE36DB;
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+    color: #FFFFFF;
+}
+
+.night_theme .windowCamaraTitulo {
+    background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+}
+
+.night_theme .tituloChequeo {
+    background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+}
+
+.night_theme .tituloChequeoSubiendo {
+    background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+}
+
+.night_theme .tituloChequeo2 {
+    background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+}
+
+.night_theme #btnRepetir {
+    background: #110038;
+    border: 1px solid #B4B4B4;
+    box-shadow: inset -1px -1px 0 0 #5C5C5C, inset 1px 1px 0 0 #FFF4FD;
+    color: #FFFFFF;
+}
+
+.night_theme #btnRepetir:hover{
+    border: 1px dotted #FFFFFF;
+}
+
+.night_theme #btnSubir {
+    background: #110038;
+    border: 1px solid #B4B4B4;
+    box-shadow: inset -1px -1px 0 0 #5C5C5C, inset 1px 1px 0 0 #FFF4FD;
+    color: #FFFFFF;
+}
+
+.night_theme #btnSubir:hover{
+    border: 1px dotted #FFFFFF;
+}
+
+.night_theme #ultimoBoton {
+    background: #110038;
+    border: 1px solid #B4B4B4;
+    box-shadow: inset -1px -1px 0 0 #5C5C5C, inset 1px 1px 0 0 #FFF4FD;
+    color: #FFFFFF;
+}
+
+.night_theme #ultimoBoton:hover{
+    border: 1px dotted #FFFFFF;
+}
 
 
 /*-------------------------OCULTOS------------------------------------*/
@@ -637,5 +735,9 @@ body{
 }
 
 .videoHide {
+    display: none;
+}
+
+.hideSaylor {
     display: none;
 }
