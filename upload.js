@@ -34,12 +34,21 @@ const botonAdentro1 = document.getElementById("botonAdentro1");
 const botonAdentro2 = document.getElementById("botonAdentro2");
 const mostrarInicio = document.getElementsByClassName("window")[0];
 const contenedorGifos = document.getElementsByClassName("contenedorGifos")[0];
+const dropDownArrow = document.getElementById("dropdown");
+const containThemes = document.getElementsByClassName("buttonSaylor");
+const day = document.getElementById("day")
+const night = document.getElementById("night")
+const misGifos = document.getElementsByClassName("mis_gifos")[0];
 var stream;
 var recorder;
 var blob;
 
 window.addEventListener('load', () => {
     recorrerGif();
+})
+
+misGifos.addEventListener('click', () => {
+    windowHide[0].classList.add("windowHide")
 })
 
 //Reemplaza Ventana inicial por la de Camara
@@ -157,6 +166,7 @@ function uploadGif(data){
     })
 }
 
+//agregar gif a Mis Guifos
 function recorrerGif() {
     for (var i=0; i < localStorage.length; i++){
         let keys = localStorage.key(i)
@@ -197,6 +207,7 @@ const stopGif = () => {
     recorder.stopRecording(stopRecordingCallback);
 };
 
+//Barra progreso Subir gif
 function progressBarEffect(bar) {
 	let cont = 0;
 	setInterval(() => {
@@ -209,3 +220,25 @@ function progressBarEffect(bar) {
     }, 100);
     progressBar1cont.classList.toggle("visible");
 }
+
+
+//Cambio de color "DAY" a "NIGHT"
+day.addEventListener("click", () => {   
+    document.getElementsByTagName("body")[0].classList.add("day_theme")    
+    document.getElementsByTagName("body")[0].classList.remove("night_theme")
+    document.getElementsByClassName("logoLight")[0].src="./gifOF_logo.png"
+    containThemes[0].classList.toggle("hideSaylor")
+    document.getElementsByClassName("camaraLogoInterno")[0].src="./assets/camera.svg"
+})
+
+night.addEventListener("click", () => {   
+    document.getElementsByTagName("body")[0].classList.remove("day_theme")  
+    document.getElementsByTagName("body")[0].classList.add("night_theme")    
+    document.getElementsByClassName("logoLight")[0].src="./gifOF_logo_dark.png";
+    containThemes[0].classList.toggle("hideSaylor")
+    document.getElementsByClassName("camaraLogoInterno")[0].src="./assets/camera_light.svg"
+})
+
+dropDownArrow.addEventListener("click", () =>{
+    containThemes[0].classList.toggle("hideSaylor")
+})
